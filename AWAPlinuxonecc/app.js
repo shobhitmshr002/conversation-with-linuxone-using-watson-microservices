@@ -52,8 +52,8 @@ app.use(require('./cloudaction'));
 var conversation = new Watson( {
   // If unspecified here, the CONVERSATION_USERNAME and CONVERSATION_PASSWORD env properties will be checked
   // After that, the SDK will fall back to the bluemix-provided VCAP_SERVICES environment property
-  username: 'de0d297d-2d7b-43c2-9deb-4f2ae447ebb5',
-  password: '5IMmDgfyKL0G',
+  username: 'USERNAME',
+  password: 'PASSWORD',
   url: 'https://gateway.watsonplatform.net/conversation/api',
   version_date: '2016-09-20',
   version: 'v1'
@@ -61,7 +61,7 @@ var conversation = new Watson( {
 
 // Endpoint to be call from the client side
 app.post( '/api/message', function(req, res) {
-  var workspace = process.env.WORKSPACE_ID || '3996fe26-40e3-46c8-be15-c4cf8c3e44ff';
+  var workspace = process.env.WORKSPACE_ID || 'WORKSPACEEID';
   if ( !workspace || workspace === '<workspace-id>' ) {
     return res.json( {
       'output': {
