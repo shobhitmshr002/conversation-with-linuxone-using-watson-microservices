@@ -67,7 +67,7 @@ Here is an overview of the interactions betwwen each layer of this code pattern.
 
 ---
 
-# Step 1 - Discover and locally run the banking application
+# Step 1 - Discover and locally run the provisioning chatbot application
 
 The objective is to discover the banking application located in the *banking-application* folder. This application is a Node.js application. It will be locally tested before packaging it into a Docker image for IBM Cloud private.
 
