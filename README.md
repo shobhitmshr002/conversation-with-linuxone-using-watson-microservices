@@ -58,7 +58,7 @@ Here is an overview of the interactions betwwen each layer of this code pattern.
 - [Part 1 - Build the Docker image from the LinuxOne Community Cloud](#part-1---build-the-docker-image-from-the-linuxone-community-cloud)
 - [Part 2 - Deploy the Docker image to IBM Cloud private](#part-2---deploy-the-docker-image-to-ibm-cloud-private)
 
-### Step 3 - Instantiate the provisiong chatbot based microservice from the IBM Cloud private catalog
+### Step 3 - Instantiate the provisiong chatbot from the IBM Cloud private catalog
 
 ### Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
 
@@ -66,16 +66,16 @@ Here is an overview of the interactions betwwen each layer of this code pattern.
 
 # Step 1 - Create an IBM Watson Assistant Service
 
-- 1.1 Create the following service and name it provisioning-conversation-service:
+- Create the following service and name it provisioning-conversation-service:
 [Watson Assistant Service](https://console.bluemix.net/catalog/services/conversation)
 
-- 1.2 Get IBM Cloud service credentials and add to .env file
+- Get IBM Cloud service credentials and add to .env file
 
 As you create the IBM Cloud services, you'll need to create service credentials. You might get either IAM or username/password based credentials based on the region.
 
 First of all, move the provisioning-conversation-service/env.sample file to provisioning-conversation-service/.env.
 
-    If the service credentials from IBM Watson Assistant is username/password based as below populate the username, password and workspace_id and comment out the IAM credentials part.
+    Look after the service credentials from IBM Watson Assistant and note the username/password. You will have to update the app.js file in the section // CHANGE HERE WITH THE USERNAME AND PASSWORD PROVIDED IN YOUR IBM WATSON ASSISTANT SERVICE
 
 
 # Step 2 - Discover and locally run the provisioning chatbot application
