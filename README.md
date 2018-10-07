@@ -120,7 +120,7 @@ The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* fo
 ## Part 2 - Run locally the provisioning chatbot application
 
 1. Move to your local folder and install the Node.js packages dependencies with an **npm install** command.
-2. Now, you can run the application locally using **node app.js**
+2. Now, you can run the application locally using **node server.js**
 3. Open a browser and point to localhost:3000 .
 
 # Step 3 - Instantiate the provisiong chatbot from the IBM Cloud private catalog
