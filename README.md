@@ -51,18 +51,14 @@ Here is an overview of the interactions betwwen each layer of this code pattern.
 
 <!-- https://ecotrust-canada.github.io/markdown-toc/ -->
 
-### Step 1 - Create an IBM Watson Assistant Service & Configure it
-
-### Step 2 - Build and deploy a Docker image to IBM Cloud private
-
+## Step 1 - Create an IBM Watson Assistant Service & Configure it
+## Step 2 - Build and deploy a Docker image to IBM Cloud private
 - [Part 1 - Build the Docker image from the LinuxOne Community Cloud](#part-1---build-the-docker-image-from-the-linuxone-community-cloud)
 - [Part 2 - Deploy the Docker image to IBM Cloud private](#part-2---deploy-the-docker-image-to-ibm-cloud-private)
+## Step 3 - Instantiate the provisiong chatbot from the IBM Cloud private catalog
+## Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
+## Step 5 - Extend this solution to access your on-premises servers
 
-### Step 3 - Instantiate the provisiong chatbot from the IBM Cloud private catalog
-
-### Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
-
-### Step 5 - Extend this solution to access your on-premises servers
 
 # Step 1 - Create an IBM Watson Assistant Service
 
