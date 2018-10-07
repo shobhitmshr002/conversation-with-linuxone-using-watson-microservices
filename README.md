@@ -73,8 +73,8 @@ First of all, move the provisioning-conversation-service/env.sample file to prov
 
     Look after the service credentials from IBM Watson Assistant and note the username/password. You will have to update the app.js file in the section // CHANGE HERE WITH THE YOUR_USERNAME AND YOUR_PASSWORD PROVIDED IN YOUR IBM WATSON ASSISTANT SERVICE
 
-Now configure using launch tool button (https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/LaunchTool.jpg)
-You now have to create a new workspace (https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/CreateWorkspace.png)
+Now configure using launch tool button (https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/LaunchTool.jpg)
+You now have to create a new workspace (https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/CreateWorkspace.png)
 
 Now use the **Import** feature for the file **AWAPlinuxonecc/training/workspace-WatsonAssitantAwap.json** to upload the Assistant Intents, Entities, and Dialog Nodes.
 
@@ -117,4 +117,22 @@ The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* fo
     
 	![alt text](images/clone.png "Clone the provisioning chatbot app")
 
+## Part 2 - Run locally the provisioning chatbot application
 
+1. Move to your local folder and install the Node.js packages dependencies with an **npm install** command.
+2. Now, you can run the application locally using **node app.js**
+3. Open a browser and point to localhost:3000 .
+
+# Step 3 - Instantiate the provisiong chatbot from the IBM Cloud private catalog
+
+Helm chart to create and to be loaded in the ICP environment.
+
+
+# Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
+
+kubectl run YOUR_SERVICE --image=DOCKERHUB/YOUR_DOCKERIMAGE
+
+# Step 5 - Extend this solution to access your on-premises servers
+
+Looking to the file **Action.js**, you can now modify the command it contains. Change the localhost value to the ip address of your choice to point to your on-premises server.
+In order to establish the commuication with your on-premises server you need to create another IBM Cloud Service for Integration.
