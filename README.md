@@ -51,7 +51,7 @@ Here is an overview of the interactions betwwen each layer of this code pattern.
 
 <!-- https://ecotrust-canada.github.io/markdown-toc/ -->
 
-### Step 1 - Create an IBM Watson Assistant Service
+### Step 1 - Create an IBM Watson Assistant Service & Configure it
 
 ### Step 2 - Build and deploy a Docker image to IBM Cloud private
 
@@ -75,8 +75,17 @@ As you create the IBM Cloud services, you'll need to create service credentials.
 
 First of all, move the provisioning-conversation-service/env.sample file to provisioning-conversation-service/.env.
 
-    Look after the service credentials from IBM Watson Assistant and note the username/password. You will have to update the app.js file in the section // CHANGE HERE WITH THE USERNAME AND PASSWORD PROVIDED IN YOUR IBM WATSON ASSISTANT SERVICE
+    Look after the service credentials from IBM Watson Assistant and note the username/password. You will have to update the app.js file in the section // CHANGE HERE WITH THE YOUR_USERNAME AND YOUR_PASSWORD PROVIDED IN YOUR IBM WATSON ASSISTANT SERVICE
 
+Now configure using launch tool button (https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/LaunchTool.jpg)
+You now have to create a new workspace (https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/CreateWorkspace.png)
+
+Now use the **Import** feature for the file **AWAPlinuxonecc/training/workspace-WatsonAssitantAwap.json** to upload the Assistant Intents, Entities, and Dialog Nodes.
+
+Find the Workspace ID by clicking on the context menu of the new workspace and select **View details**
+
+    Again, here you will have to update the app.js. Look and change for the value of YOUR_WORKSPACEID and replace it with the value you found above.
+   
 
 # Step 2 - Discover and locally run the provisioning chatbot application
 
@@ -112,4 +121,4 @@ The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* fo
     
 	![alt text](images/clone.png "Clone the provisioning chatbot app")
 
-We’ll be using the file AWAPlinuxonecc/training/workspace-WatsonAssitantAwap.json to upload the Assistant Intents, Entities, and Dialog Nodes.
+
