@@ -1,6 +1,6 @@
 {"repository": {
   "type": "https",
-  "url": "https://github.com/IBM/conversation-with-linuxone-using-watson-microservices.git",
+  "url": "https://github.com/IBM/conversation-with-linuxone-using-watson-microservices.git"},
   "name": "conversation-simple",
   "description": "A Node.js application (named awap) capable to provide support services using Linux z System through a conversation using Watson APIs in Bluemix.",
   "version": "0.1.1",
