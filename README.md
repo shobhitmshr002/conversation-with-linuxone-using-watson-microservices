@@ -53,7 +53,6 @@ Here is an overview of the interactions betwwen each layer of this code pattern.
 
 ### Step 1 - Create an IBM Watson Assistant Service
 
-
 ### Step 2 - Build and deploy a Docker image to IBM Cloud private
 
 - [Part 1 - Build the Docker image from the LinuxOne Community Cloud](#part-1---build-the-docker-image-from-the-linuxone-community-cloud)
@@ -61,15 +60,27 @@ Here is an overview of the interactions betwwen each layer of this code pattern.
 
 ### Step 3 - Instantiate the provisiong chatbot based microservice from the IBM Cloud private catalog
 
-### Step 4 - Talk and get it done with IBM LinuxONE Systems
+### Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
 
 ### Step 5 - Extend this solution to access your on-premises servers
 
----
+# Step 1 - Create an IBM Watson Assistant Service
 
-# Step 1 - Discover and locally run the provisioning chatbot application
+- 1.1 Create the following service and name it provisioning-conversation-service:
+[Watson Assistant Service](https://console.bluemix.net/catalog/services/conversation)
 
-The objective is to discover the banking application located in the *banking-application* folder. This application is a Node.js application. It will be locally tested before packaging it into a Docker image for IBM Cloud private.
+- 1.2 Get IBM Cloud service credentials and add to .env file
+
+As you create the IBM Cloud services, you'll need to create service credentials. You might get either IAM or username/password based credentials based on the region.
+
+First of all, move the provisioning-conversation-service/env.sample file to provisioning-conversation-service/.env.
+
+    If the service credentials from IBM Watson Assistant is username/password based as below populate the username, password and workspace_id and comment out the IAM credentials part.
+
+
+# Step 2 - Discover and locally run the provisioning chatbot application
+
+The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* folder. This application is a Node.js application. It will be locally tested before packaging it into a Docker image for IBM Cloud private.
 
 ## Part 1 - Discover the provisioning chatbot application
 
@@ -100,4 +111,5 @@ The objective is to discover the banking application located in the *banking-app
    `git clone https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices`
     
 	![alt text](images/clone.png "Clone the provisioning chatbot app")
-	
+
+We’ll be using the file AWAPlinuxonecc/training/workspace-WatsonAssitantAwap.json to upload the Assistant Intents, Entities, and Dialog Nodes.
