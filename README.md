@@ -45,7 +45,7 @@ Here is an overview of the interactions betwwen each layer of this code pattern.
 * IBM Private Cloud (ICP) solution
 * Cognitive/AI technologies: Watson Assistant (aka. "Conversation Service")
 * Partner solution (possible extensions): IBM VMWare vRealize Automation (vRA)
-* Integration services: Rest APIs of OpenStack and vRA, IBM Secure Gateway services
+this is an update for LSU of my application* Integration services: Rest APIs of OpenStack and vRA, IBM Secure Gateway services
 
 # Steps
 
@@ -73,8 +73,12 @@ First of all, move the provisioning-conversation-service/env.sample file to prov
 
     Look after the service credentials from IBM Watson Assistant and note the username/password. You will have to update the app.js file in the section // CHANGE HERE WITH THE YOUR_USERNAME AND YOUR_PASSWORD PROVIDED IN YOUR IBM WATSON ASSISTANT SERVICE
 
-Now configure using launch tool button ![alt text](https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/images/LaunchTool.jpg)
-You now have to create a new workspace ![alt text](https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/images/CreateWorkspace.png)
+Now configure using launch tool button :
+![alt text](https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/images/LaunchTool.jpg)
+
+Next, you have to create a new workspace:
+
+![alt text](https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/images/CreateWorkspace.png)
 
 Now use the **Import** feature for the file **AWAPlinuxonecc/training/workspace-WatsonAssitantAwap.json** to upload the Assistant Intents, Entities, and Dialog Nodes.
 
