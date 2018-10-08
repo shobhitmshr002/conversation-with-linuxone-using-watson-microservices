@@ -74,11 +74,11 @@ First of all, move the provisioning-conversation-service/env.sample file to prov
     Look after the service credentials from IBM Watson Assistant and note the username/password. You will have to update the app.js file in the section // CHANGE HERE WITH THE YOUR_USERNAME AND YOUR_PASSWORD PROVIDED IN YOUR IBM WATSON ASSISTANT SERVICE
 
 Now configure using launch tool button :
-![alt text](https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/images/LaunchTool.jpg)
+![alt text](images/LaunchTool.jpg "Launch Tool")
 
 Next, you have to create a new workspace:
 
-![alt text](https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/images/CreateWorkspace.png)
+![alt text](images/CreateWorkspace.png "Create New Workspace")
 
 Now use the **Import** feature for the file **AWAPlinuxonecc/training/workspace-WatsonAssitantAwap.json** to upload the Assistant Intents, Entities, and Dialog Nodes.
 
@@ -95,7 +95,7 @@ The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* fo
 
 1. Create a [GitHub account](https://github.com/).
 
-	![alt text](images/github_signup.png "Sign up")
+	![alt text](images/githubSingup.jpg "Sign up")
 	* Pick a username. This will be referenced later as "YOUR_USERNAME".
 	* Enter an email.
 	* Create a password.
@@ -105,7 +105,7 @@ The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* fo
 
 2. Fork the provisioning chatbot application from this GitHub repository to your own GitHub repository.
 
-	![alt text](images/fork.png "Fork the provisioning chatbot app")
+	![alt text](images/Fork.jpg "Fork the provisioning chatbot app")
 	* Click **Fork**.
 	* Github automatically forks this project from this repository *IBM/conversation-with-linuxone-using-watson-microservices* to your repository *YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices*.
 	* Discover your forked project (your fresh provisioning chatbot application) in your Github repository *YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices*.
