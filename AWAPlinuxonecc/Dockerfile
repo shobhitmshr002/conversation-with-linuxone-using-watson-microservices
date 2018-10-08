@@ -6,7 +6,7 @@ FROM node:latest
 ENV PORT=3000
 EXPOSE 3000
 ENV NODE_ENV production
-# this is an update for LSU of my application
+# removed comment
 #Copy all app files from the current directory into the app 
 #directory in your container. Set the app directory
 #as the working directory
