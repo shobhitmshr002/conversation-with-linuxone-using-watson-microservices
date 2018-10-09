@@ -27,7 +27,7 @@ This journey provides a chatbot interface to demonsrate how you can simply integ
 
 ## Sequence Diagram Overview
 Here is an overview of the interactions betwwen each layer of this code pattern. 
-(https://github.com/SebLL/AWAP/blob/master/SequenceDiagram.png)
+![alt text](images/SequenceDiagram.png "Sequence diagram overview")
 
 # Included components
 
