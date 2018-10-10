@@ -6,7 +6,7 @@ WORKDIR /AWAPlinuxonecc
 COPY package.json /AWAPlinuxonecc/
 
 RUN cd /AWAPlinuxonecc; npm install; npm prune --production
-
+# comment added
 COPY . /AWAPlinuxonecc
 #Expose the port for AWAP app, and set 
 #it as an environment variable as expected by cf apps
