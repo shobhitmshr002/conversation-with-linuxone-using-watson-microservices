@@ -24,4 +24,3 @@ ENV NODE_ENV production
 #IBM Containers networking is finished before the app starts. 
 # CMD (sleep 60; npm start)
 CMD ["node","/AWAPlinuxonecc/server.js" ]
-

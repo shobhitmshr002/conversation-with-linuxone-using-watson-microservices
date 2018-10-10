@@ -27,7 +27,7 @@ This journey provides a chatbot interface to demonsrate how you can simply integ
 
 ## Sequence Diagram Overview
 Here is an overview of the interactions betwwen each layer of this code pattern. 
-![alt text](https://github.com/SebLL/AWAP/blob/master/SequenceDiagram.png)
+![alt text](images/SequenceDiagram.png "Sequence diagram overview")
 
 # Included components
 
@@ -45,7 +45,7 @@ Here is an overview of the interactions betwwen each layer of this code pattern.
 * IBM Private Cloud (ICP) solution
 * Cognitive/AI technologies: Watson Assistant (aka. "Conversation Service")
 * Partner solution (possible extensions): IBM VMWare vRealize Automation (vRA)
-* Integration services: Rest APIs of OpenStack and vRA, IBM Secure Gateway services
+this is an update for LSU of my application* Integration services: Rest APIs of OpenStack and vRA, IBM Secure Gateway services
 
 # Steps
 
@@ -73,8 +73,12 @@ First of all, move the provisioning-conversation-service/env.sample file to prov
 
     Look after the service credentials from IBM Watson Assistant and note the username/password. You will have to update the app.js file in the section // CHANGE HERE WITH THE YOUR_USERNAME AND YOUR_PASSWORD PROVIDED IN YOUR IBM WATSON ASSISTANT SERVICE
 
-Now configure using launch tool button (https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/images/LaunchTool.jpg)
-You now have to create a new workspace (https://github.com/IBM/conversation-with-linuxone-using-watson-microservices/blob/master/images/CreateWorkspace.png)
+Now configure using launch tool button :
+![alt text](images/LaunchTool.jpg "Launch Tool")
+
+Next, you have to create a new workspace:
+
+![alt text](images/CreateWorkspace.png "Create New Workspace")
 
 Now use the **Import** feature for the file **AWAPlinuxonecc/training/workspace-WatsonAssitantAwap.json** to upload the Assistant Intents, Entities, and Dialog Nodes.
 
@@ -91,7 +95,7 @@ The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* fo
 
 1. Create a [GitHub account](https://github.com/).
 
-	![alt text](images/github_signup.png "Sign up")
+	![alt text](images/githubSingup.jpg "Sign up")
 	* Pick a username. This will be referenced later as "YOUR_USERNAME".
 	* Enter an email.
 	* Create a password.
@@ -101,7 +105,7 @@ The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* fo
 
 2. Fork the provisioning chatbot application from this GitHub repository to your own GitHub repository.
 
-	![alt text](images/fork.png "Fork the provisioning chatbot app")
+	![alt text](images/Fork.jpg "Fork the provisioning chatbot app")
 	* Click **Fork**.
 	* Github automatically forks this project from this repository *IBM/conversation-with-linuxone-using-watson-microservices* to your repository *YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices*.
 	* Discover your forked project (your fresh provisioning chatbot application) in your Github repository *YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices*.
@@ -119,9 +123,31 @@ The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* fo
 
 ## Part 2 - Run locally the provisioning chatbot application
 
-1. Move to your local folder and install the Node.js packages dependencies with an **npm install** command.
-2. Now, you can run the application locally using **node server.js**
-3. Open a browser and point to localhost:3000 .
+
+In order to run the provisioning chatbot application, you need to install the following components for your environment (Windows, Mac OS, Linux):
+
+    Node.js: Node.js is a javascript application server.
+    npm: npm resolves Node.js package dependencies. According to your operating system, npm may be distributed with Node.js.
+
+Ensure you can execute **node -v** and **npm -v** commands from a command line interface.
+
+![alt text](images/nodenpmVersion.jpg "Check node and npm commands")
+
+1. Using your command line, move to your local folder where you clone the git repository 
+2. Install the Node.js packages dependencies by running the **npm install** command.
+
+Before running the application, **remember to modify the file app.js** as indicated in Step 1, in "blue sections".
+
+3. So now, you should be ready to run the application locally using the following command **node server.js**
+4. Open a browser and point to localhost:3000 .
+5. Nice ! You should get a page to the chatbot application. 
+
+Here is a starting conversation example*, start with **Hello**
+*you may express it differently and make also the system learn through the IBM Watson Assistant Service by adding new intents, entities and dialogs if you need !
+
+![alt text](images/conversationSample.png "Conversation with the provisioning chatbot")
+
+CONGRATULATIONS ! You are done with the first part of this code patten ! Now we are going to pakage and deploy the provisioning chatbot application for IBM Cloud Private in order to deploy it to IBM LinuxONE Systems.
 
 # Step 3 - Instantiate the provisiong chatbot from the IBM Cloud private catalog
 
