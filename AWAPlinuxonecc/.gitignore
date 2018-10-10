@@ -7,3 +7,4 @@ coverage
 npm-debug.log
 /package.json
 /.gitignore
+/package-lock.json
