@@ -136,7 +136,7 @@ Ensure you can execute **node -v** and **npm -v** commands from a command line i
 1. Using your command line, move to your local folder where you clone the git repository 
 2. Install the Node.js packages dependencies by running the **npm install** command.
 
-Before running the application, **remember to modify the file app.js** as indicated in Step 1, in "blue sections".
+Before running the application, **remember to modify the file app.js** as indicated in Step 1 ! (See in "blue sections").
 
 3. So now, you should be ready to run the application locally using the following command **node server.js**
 4. Open a browser and point to localhost:3000 .
@@ -150,6 +150,18 @@ Here is a starting conversation example*, start with **Hello**
 CONGRATULATIONS ! You are done with the first part of this code patten ! Now we are going to pakage and deploy the provisioning chatbot application for IBM Cloud Private in order to deploy it to IBM LinuxONE Systems.
 
 # Step 3 - Instantiate the provisiong chatbot from the IBM Cloud private catalog
+
+So it is time now to deploy your modified code from your github repository to a linux virtual server running in the IBM Cloud Community Cloud.
+
+## 3.1 Create your LinuxONE virtual server 
+
+This is a linux server we will use to build the Docker image from the LinuxONE Community Cloud.
+Here is a detailed Virtual Server Deployment Guide in case you need it as the interface is very intuitive. You will go through these steps :
+
+    You will request access to LinuxONE Community Cloud.
+    You will make a first time setup (select SLES12SP3)
+    You will deploy your LinuxONE virtual server.
+    You will log in to your LinuxONE virtual server using SSH.
 
 Helm chart to create and to be loaded in the ICP environment.
 
