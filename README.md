@@ -165,19 +165,34 @@ You will go through these steps :
 
     You will request access to LinuxONE Community Cloud.
     You will make a first time setup (select SLES12SP3)
-    You will deploy your LinuxONE virtual server. Create a new ssh key pair and named it linuxone (for instance)
-    You will log in to your LinuxONE virtual server using SSH.
-    To log into your newly created Linux Virtual Server on IBM LinuxONE System type:
-    ssh -i /<Location of saved private key file>/linuxone.pem linux1@YOUR_IP_ADDRESS
+    You will deploy your LinuxONE virtual server.  Create a new ssh key pair and name it (for instance): linuxone
+    Your are ready to log into your newly created Linux Virtual Server on IBM LinuxONE System.
     
+ To Log in, use this **command template**:
+ ssh -i /<Location of saved private key file>/linuxone.pem linux1@YOUR_IP_ADDRESS
+	
 ## 3.2 Build a Docker image for the provisioning chatbot application
 
 Clone the repository from your github repository to your new Linux Virtual Server
-   `git clone https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices`
+   `git clone https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices`	
+![alt text](images/clone.png "Clone the provisioning chatbot app")
 
-	![alt text](images/clone.png "Clone the provisioning chatbot app")
+Move to the directory <YOUR_GIT_CLONE_LOCATION>/AWAPlinuxonecc and look for the file named **Action.js**.
 
+    Look to the following section and modify it accordingly:
+    // ssh -p YOUR_PORT_NUMBER YOUR_USER@YOUR_PUBLIC_IP_ADDRESS YOUR_PROVISIONING_COMMAND
+Save the **Action.js** file.
+You are ready to build your docker image with the following command:
 
+    sudo docker build -t "YOUR_USERNAME-AWAPlinuxonecc:latest" .
+    Do not forget the . at the end of the command  :-) !
+
+You can, now, start your application from the docker image you just created :
+
+    sudo docker run -p 3000:3000 YOUR_USERNAME-AWAPlinuxonecc
+Launch a browser and point to YOUR_IP_ADDRESS:3000 and you should get access to the provisioning chatbot application as you tested previously locally on your own machine.
+
+It is time now to perform deployment of this image from **IBM Cloud Private** interface.
 
 # Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
 
