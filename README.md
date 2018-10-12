@@ -157,11 +157,9 @@ So it is time now to deploy your modified code from your github repository to a 
 
 This is a linux server we will use to build the Docker image from the LinuxONE Community Cloud.
 
-In case you need it, here is a detailed Virtual Server Deployment Guide:
-![alt text](https://github.com/LinuxONE-community-cloud/technical-resources/blob/master/deploy-virtual-server.md "Create a Linux Virtual Server")
+In case you need it, here is a detailed [Virtual Server Deployment Guide](https://github.com/LinuxONE-community-cloud/technical-resources/blob/master/deploy-virtual-server.md)
 
-Otherwise you can directly to (It has a well defined and very intuitive interface) :
-![alt text](https://developer.ibm.com/linuxone/ "Go to IBM LinuxONE community Cloud")
+Otherwise you can directly to [IBM linuxONE Community Cloud](https://developer.ibm.com/linuxone/) .It has a well defined and very intuitive interface.
 
 You will go through these steps :
 
