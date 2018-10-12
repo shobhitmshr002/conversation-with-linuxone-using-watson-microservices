@@ -156,14 +156,29 @@ So it is time now to deploy your modified code from your github repository to a 
 ## 3.1 Create your LinuxONE virtual server 
 
 This is a linux server we will use to build the Docker image from the LinuxONE Community Cloud.
-Here is a detailed Virtual Server Deployment Guide in case you need it as the interface is very intuitive. You will go through these steps :
+
+In case you need it, here is a detailed Virtual Server Deployment Guide:
+![alt text](https://github.com/LinuxONE-community-cloud/technical-resources/blob/master/deploy-virtual-server.md "Create a Linux Virtual Server")
+
+Otherwise you can directly to (It has a well defined and very intuitive interface) :
+![alt text](https://developer.ibm.com/linuxone/ "Go to IBM LinuxONE community Cloud")
+
+You will go through these steps :
 
     You will request access to LinuxONE Community Cloud.
     You will make a first time setup (select SLES12SP3)
-    You will deploy your LinuxONE virtual server.
+    You will deploy your LinuxONE virtual server. Create a new ssh key pair and named it linuxone (for instance)
     You will log in to your LinuxONE virtual server using SSH.
+    To log into your newly created Linux Virtual Server on IBM LinuxONE System type:
+    ssh -i /<Location of saved private key file>/linuxone.pem linux1@YOUR_IP_ADDRESS
+    
+## 3.2 Build a Docker image for the provisioning chatbot application
 
-Helm chart to create and to be loaded in the ICP environment.
+Clone the repository from your github repository to your new Linux Virtual Server
+   `git clone https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices`
+
+	![alt text](images/clone.png "Clone the provisioning chatbot app")
+
 
 
 # Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
