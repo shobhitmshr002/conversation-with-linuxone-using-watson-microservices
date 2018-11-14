@@ -192,7 +192,54 @@ You can, now, start your application from the docker image you just created :
     sudo docker run -p 3000:3000 YOUR_USERNAME-AWAPlinuxonecc
 Launch a browser and point to YOUR_IP_ADDRESS:3000 and you should get access to the provisioning chatbot application as you tested previously locally on your own machine.
 
-It is time now to perform deployment of this image from **IBM Cloud Private** interface.
+Here is a sample sequence of dialogs to test your code is working properly:
+
+Bot - Welcome to AWAP
+You - Hello
+Bot - Hello and welcome to this cognitive demonstration platform, how are you today ?
+You - I am ok and you ?
+Bot - I am ok ! All my functions seem to work properly :-) ! What are we doing today ?
+You - I would like to deploy cloud services on IBM LinuxONE
+Bot - Let's go for Cloud ! I am connected to a Cloud Environment running on a LinuxONE System. It  is based on Openstack, Would you like to work with this environment ?
+You - Yes
+Bot - I will use an Openstack based environment to do Infrastructure-as-a-service or IaaS, for you. Please, provide me with more information (Linux, distribution and vm size) about the cloud service to deploy ?
+You - what can you do ?
+Bot - Please, can you mention the linux image you need ? Redhat, SUSE or Ubuntu ? Can you also specify the Virtual Machine (VM) size you need ? small (1 vcpu) ? medium (2 vcpus) ? or large (4 vcpus) ?
+You - ok provision a linux redhat in a small vm
+Bot - I provisioned a small Virtual Machine with Linux Redhat on it. You can follow its deployment here ACCESS TO CLOUD MANAGER APPLIANCE. Would you like to do another deployment ?
+
+In the sample code delivered the action is creating a sample file with the linux distribution you selected. In order to validate your provisioning chatbot is ready to execute any kind of commands, check the following :
+
+1 - Connect to you Linux Virtual machine running on IBM LinuxONE Community Cloud :
+	=> ssh -i linuxone.pem linux1@<YOUR_IP_ADDRESS>
+
+
+2 - sudo docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+6eab36b7265d        awaplinuxonecc:v4   "node /AWAPlinuxon..."   3 minutes ago       Up 3 minutes        0.0.0.0:3000->3000/tcp   upbeat_perlman
+
+3 - sudo docker exec -i -t <YOUR_CONTAINER_ID> /bin/bash
+
+<YOUR_CONTAINER_ID> = 6eab36b7265d , in this example.
+
+4 - Move to the tmp directory of the running docker container
+Example : root@6eab36b7265d:/AWAPlinuxonecc# cd /tmp
+
+5 - list the content of /tmp directory : 
+root@6eab36b7265d:/tmp# ll
+total 12
+drwxrwxrwt 1 root root 4096 Nov 13 18:11 ./
+drwxr-xr-x 1 root root 4096 Nov 13 18:10 ../
+-rw-r--r-- 1 root root   54 Nov 13 18:11 RHEL7U5.txt
+
+6 - look at the file content of the file:
+root@6eab36b7265d:/tmp# cat RHEL7U5.txt 
+From here you can code any deployment from a dialog !
+root@6eab36b7265d:/tmp#
+
+Congratulations ! You may now decide to modify the code with your own code, rebuild a new version of the docker image and test it again. 
+
+Otherwise it is time now to perform deployment of this image from **IBM Cloud Private** interface.
 
 # Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
 
