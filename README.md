@@ -248,9 +248,92 @@ Otherwise it is time now to perform deployment of this image from **IBM Cloud Pr
 
 # Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
 
-kubectl run YOUR_SERVICE --image=DOCKERHUB/YOUR_DOCKERIMAGE
+The objective is to discover the IBM Cloud private catalog in order to instantiate a container from your Docker image containing your chatbot hybrid cloud provisioning application. In this way, you will be able to dialog with a linux server hosted on IBM LinuxONE from the IBM Cloud Private solution running in the IBM LinuxONE Community Cloud.
 
+## Part 1 - Discover the Helm chart from the calalog
+
+1. Subscribe to [IBM Cloud private in the Linux One Community Cloud](https://developer.ibm.com/linuxone)
+![alt text](images/LinuxONECommunityCloud.gif "ICP subscription")
+    * Click **Try IBM Cloud Private**.
+    * Fill the form and submit.
+    * Activate your account when you will receive the confirmation email.
+
+2. Login to the IBM Cloud private catalog (the access link is provided in the confirmation email) Fill credentials with yours:
+	
+	![alt text](images/icp_login.png "ICP Login")
+    * Replace the username by your email.
+    * Replace the password by your password.
+
+3. Click the top-right icon  from the menu to access the catalog.
+
+	![alt text](images/icp-catalog-users.png "ICp catalog")
+	* Click on **Catalog**.
+
+4. Click on the Helm Chart called **openmplbank - Banking dashboard** to see the overview of the this banking microservice.
+
+	> NOTE: If you are practicing this pattern during an IBM event like SHARE or Think, Click on the Helm Chart called **openmplbank-ibm-lab4share**
+
+	![alt text](images/icp-banking-microservices.png "ICp catalog")
+
+
+## Part 2 - Configure and install your banking microservice
+
+1. Check the chart derails and click on configure to create your container.
+
+	![alt text](images/icp-banking-microservices-config.png "ICP catalog")
+	* Click **Configure**.
+
+2. Configure the container:
+
+	![alt text](images/AwapInICPCatalog.png "Cognitive Hybrid Cloud Provisioning service configuration")
+	* Fill the release name with *YOUR_USERNAME* (limit of 30 characters).
+	* Select an available target namespace in the list.
+	* The image repository is already filled with the Docker image defined before: **cluster68.icp:8500/codepatterns/code-pattern-icp-cognitivehybridcloud-microservices**.
+	
+	> NOTE: If you are practicing this pattern during an IBM event like SHARE or Think, fill the image repository with your **YOUR_IMAGE_NAME**.
+
+3. Click the **Install** button. When the process is finished, click **View Helm Release**.
+
+	![alt text](images/icp-view-helm-release.png "Banking service configuration")
+	
+
+## Part 3 - Access your banking microservice
+1. From the Helm release view, the container details are displayed.
+
+	![alt text](images/run-app-icp.png "Banking service configuration")
+	* Click on **Launch** to display the banking microservice.
+
+
+2. Test your application:
+	
+	![alt text](images/icp-banking-app-test.png "Banking application")
+    * Select a customer ID.
+    * Please wait during the application calls banking data from the Mainframe through API Connect and z/OS Connect EE.
+    * The result is displayed in a JSON structure.
+    
+3. Your account is available for 24 hours. All your containers will removed when your account will expire.
+
+---
+
+:thumbsup: Congratulations! Your banking application has been instantiated from IBM Cloud Private as container. Your banking application succeeded to call banking APIs to call the Mainframe for banking business services.
+
+---
 # Step 5 - Extend this solution to access your on-premises servers
 
 Looking to the file **Action.js**, you can now modify the command it contains. Change the localhost value to the ip address of your choice to point to your on-premises server.
 In order to establish the commuication with your on-premises server you need to create another IBM Cloud Service for Integration.
+
+
+# Licence
+
+[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+
+# Links
+
+* [IBM Cloud private](https://www.ibm.com/cloud/private)
+* [IBM Cloud private - Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSBS6K/product_welcome_cloud_private.html)
+
+[IBM ID]: https://www.ibm.com/account/us-en/signup/register.html
+[API Developer Portal]: https://developer-contest-spbodieusibmcom-prod.developer.us.apiconnect.ibmcloud.com/
+
+
