@@ -266,19 +266,17 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 
 3. Click the top-right icon  from the menu to access the catalog.
 
-	![alt text](images/icp-catalog-users.png "ICp catalog")
+	![alt text](images/icp-catalog-users.png "ICP catalog")
 	* Click on **Catalog**.
 
-4. Click on the Helm Chart called **openmplbank - Banking dashboard** to see the overview of the this banking microservice.
+4. Click on the Helm Chart called **awap-cognitive-hybridcloud** to see the overview of the the chatbot cloud provisioning microservice.
 
-	> NOTE: If you are practicing this pattern during an IBM event like SHARE or Think, Click on the Helm Chart called **openmplbank-ibm-lab4share**
-
-	![alt text](images/icp-banking-microservices.png "ICp catalog")
+	![alt text](images/AwapInICPCatalog.png "Awap view in ICP catalog")
 
 
-## Part 2 - Configure and install your banking microservice
+## Part 2 - Configure and install your cloud provisioning chatbot microservice
 
-1. Check the chart derails and click on configure to create your container.
+1. Check the chart details and click on configure to create your container.
 
 	![alt text](images/icp-banking-microservices-config.png "ICP catalog")
 	* Click **Configure**.
@@ -297,7 +295,7 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 	![alt text](images/icp-view-helm-release.png "Banking service configuration")
 	
 
-## Part 3 - Access your banking microservice
+## Part 3 - Access your chatbot microservice
 1. From the Helm release view, the container details are displayed.
 
 	![alt text](images/run-app-icp.png "Banking service configuration")
