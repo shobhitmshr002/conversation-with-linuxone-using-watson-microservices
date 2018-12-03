@@ -278,42 +278,40 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 
 1. Check the chart details and click on configure to create your container.
 
-	![alt text](images/icp-banking-microservices-config.png "ICP catalog")
+	![alt text](images/DeployHelmChart.png "ICP AWAP deployment")
 	* Click **Configure**.
 
 2. Configure the container:
 
-	![alt text](images/AwapInICPCatalog.png "Cognitive Hybrid Cloud Provisioning service configuration")
-	* Fill the release name with *YOUR_USERNAME* (limit of 30 characters).
-	* Select an available target namespace in the list.
-	* The image repository is already filled with the Docker image defined before: **cluster68.icp:8500/codepatterns/code-pattern-icp-cognitivehybridcloud-microservices**.
-	
-	> NOTE: If you are practicing this pattern during an IBM event like SHARE or Think, fill the image repository with your **YOUR_IMAGE_NAME**.
+	![alt text](images/ConfigureHelmChart.png "Cognitive Hybrid Cloud Provisioning service configuration")
+	* Fill the release name with the name of your choice (limit of 30 characters).
+	* Select the target namespace, named: "linuxone" in the list.
+	* The image repository is already filled with the Docker image defined before: **clusterNN.icp:8500/codepatterns/awap-cognitive-hybridcloud**.	
 
 3. Click the **Install** button. When the process is finished, click **View Helm Release**.
 
-	![alt text](images/icp-view-helm-release.png "Banking service configuration")
+	![alt text](images/icp-view-helm-release.png "Cognitive Hybrid Cloud Service configuration")
 	
 
 ## Part 3 - Access your chatbot microservice
 1. From the Helm release view, the container details are displayed.
 
-	![alt text](images/run-app-icp.png "Banking service configuration")
-	* Click on **Launch** to display the banking microservice.
+	![alt text](images/run-app-icp.png "Cognitive Hybrid Cloud Service configuration")
+	* Click on **Launch** to display the Chatbot microservice.
 
 
 2. Test your application:
 	
-	![alt text](images/icp-banking-app-test.png "Banking application")
-    * Select a customer ID.
-    * Please wait during the application calls banking data from the Mainframe through API Connect and z/OS Connect EE.
-    * The result is displayed in a JSON structure.
+	![alt text](images/icp-banking-app-test.png "Cognitive Hybrid Cloud service application")
+    * Start by saying "Hello"
+    * The chatbot is initialized using a "corpus" pre-defined in IBM Cloud Watson Assistant Workspace
+    * The result is displayed in the chatbot window
     
 3. Your account is available for 24 hours. All your containers will removed when your account will expire.
 
 ---
 
-:thumbsup: Congratulations! Your banking application has been instantiated from IBM Cloud Private as container. Your banking application succeeded to call banking APIs to call the Mainframe for banking business services.
+:thumbsup: Congratulations! Your banking application has been instantiated from IBM Cloud Private as container. Your Cognitive Hybrid Cloud application succeeded to execute a command in your LinuxONE Server.
 
 ---
 # Step 5 - Extend this solution to access your on-premises servers
