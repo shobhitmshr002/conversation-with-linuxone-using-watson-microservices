@@ -119,7 +119,6 @@ The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* fo
 
    `git clone https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices`
     
-	![alt text](images/clone.png "Clone the provisioning chatbot app")
 
 ## Part 2 - Run locally the provisioning chatbot application
 
