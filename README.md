@@ -296,13 +296,13 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 ## Part 3 - Access your chatbot microservice
 1. From the Helm release view, the container details are displayed.
 
-	![alt text](images/run-app-icp.png "Cognitive Hybrid Cloud Service configuration")
+	![alt text](images/ServiceDeployed.png "Cognitive Hybrid Cloud Service configuration")
 	* Click on **Launch** to display the Chatbot microservice.
 
 
 2. Test your application:
 	
-	![alt text](images/icp-banking-app-test.png "Cognitive Hybrid Cloud service application")
+	![alt text](images/ChatbotApplication.png "Cognitive Hybrid Cloud service application")
     * Start by saying "Hello"
     * The chatbot is initialized using a "corpus" pre-defined in IBM Cloud Watson Assistant Workspace
     * The result is displayed in the chatbot window
