@@ -290,7 +290,7 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 
 3. Click the **Install** button. When the process is finished, click **View Helm Release**.
 
-	![alt text](images/icp-view-helm-release.png "Cognitive Hybrid Cloud Service configuration")
+	![alt text](images/ViewHelmRelease.png "Cognitive Hybrid Cloud Service configuration")
 	
 
 ## Part 3 - Access your chatbot microservice
