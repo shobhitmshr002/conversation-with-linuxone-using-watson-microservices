@@ -302,15 +302,26 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 2. Test your application:
 	
 	![alt text](images/ChatbotApplication.png "Cognitive Hybrid Cloud service application")
+	
     * Start by saying "Hello"
     * The chatbot is initialized using a "corpus" pre-defined in IBM Cloud Watson Assistant Workspace
     * The result is displayed in the chatbot window
     
-3. Your account is available for 24 hours. All your containers will removed when your account will expire.
+    Use the dialog sequence mentioned in section 3.2:
+    https://github.com/IBM/conversation-with-linuxone-using-watson-microservices#32-build-a-docker-image-for-the-provisioning-chatbot-application
+    
+    For instance, I ask the chatbot to provision a Linux Ubuntu image on IBM LinuxONE. You should have a similar result in the log:
+    ![alt text](images/CheckYourActionInTheLogs.png "Check your provisioning request log")
+   
+   If you can access the /tmp of your running docker container you will see a file created with the Linux of your choice.
+   The action executed in this code pattern is very simple and of course you can modify this code to execute your own actions !
+   Enjoy creating new use cases !
+    
+3. REMEMBER ! Your account is available for 24 hours. All your containers will removed when your account will expire.
 
 ---
 
-:thumbsup: Congratulations! Your banking application has been instantiated from IBM Cloud Private as container. Your Cognitive Hybrid Cloud application succeeded to execute a command in your LinuxONE Server.
+:thumbsup: Congratulations! Your Cognitive Hybrid Cloud application has been instantiated from IBM Cloud Private as container. Your Cognitive Hybrid Cloud application succeeded to execute a command in your LinuxONE Server.
 
 ---
 # Step 5 - Extend this solution to access your on-premises servers
