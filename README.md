@@ -327,8 +327,19 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 # Step 5 - Extend this solution to access your on-premises servers
 
 Looking to the file **Action.js**, you can now modify the command it contains. Change the localhost value to the ip address of your choice to point to your on-premises server.
-In order to establish the commuication with your on-premises server you need to create another IBM Cloud Service for Integration.
+In order to establish the communication with your on-premises server you need to create an IBM Cloud Service for Integration, named Secure Gateway:
 
+![alt text](images/CreateSecureGatewayService.png "Check your provisioning request log")
+
+Here is the link to start creating your Hybrid Cloud Connection and use the chatbot application to provide Hybrid Cloud Services reusing existing services/APIs hosted in your premises ! 
+
+[Using IBM Cloud Secure Gateway Services](https://console.bluemix.net/catalog/services/secure-gateway)
+
+---
+
+:thumbsup: Congratulations ! I hope you enjoyed working with this Code Pattern.
+
+---
 
 # Licence
 
