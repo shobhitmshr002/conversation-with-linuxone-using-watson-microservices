@@ -285,7 +285,7 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 	![alt text](images/ConfigureHelmChart.png "Cognitive Hybrid Cloud Provisioning service configuration")
 	* Fill the release name with the name of your choice (limit of 30 characters).
 	* Select the target namespace, named: "linuxone" in the list.
-	* The image repository is already filled with the Docker image defined before: **clusterNN.icp:8500/codepatterns/awap-cognitive-hybridcloud**.	
+	* The image repository is already filled with the Docker image defined before: **cluster68.icp:8500/codepatterns/awap-cognitive-hybridcloud**.	
 
 3. Click the **Install** button. When the process is finished, click **View Helm Release**.
 
