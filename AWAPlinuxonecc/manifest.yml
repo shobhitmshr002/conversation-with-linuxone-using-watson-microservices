@@ -1,6 +1,6 @@
 ---
 declared-services:
-  conversation-simple-demo-test1:
+  cwlo-assistant:
     label: conversation
     plan: free
 applications:
@@ -10,7 +10,7 @@ applications:
   memory: 256M
   instances: 1
   services:
-  - conversation-simple-demo-test1
+  - cwlo-assistant
   env:
     NPM_CONFIG_PRODUCTION: false
     WORKSPACE_ID: e915b510-6503-4fc7-8bfa-bc1ca15fad94
