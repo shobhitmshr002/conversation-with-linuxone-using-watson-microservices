@@ -1,6 +1,7 @@
 *.project
 .env
 codecov
+.DS_Store
 
 # Logs
 logs
