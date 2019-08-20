@@ -1,6 +1,6 @@
 # IBM Watson Assistant with IBM LinuxONE Systems
 
-In this code pattern, you will learn how to build and deploy a cognitive microservice with IBM Cloud Private running in the IBM LinuxONE Community Cloud. 
+In this code pattern, you will learn how to build and deploy a cognitive microservice with IBM Cloud Private running in the IBM LinuxONE Community Cloud.
 
 IBM Cloud Private is a private cloud platform for developing and running workloads locally. It is an integrated environment that enables you to design, develop, deploy and manage on-premises, containerized cloud applications behind a firewall. It includes the container orchestrator Kubernetes, a private image repository, a management console and monitoring frameworks.
 
@@ -39,7 +39,6 @@ When you will complete this code pattern, you will understand how to:
 1. [Instantiate the provisiong chatbot from the IBM Cloud private catalog]()
 1. [Run the application: Talk and get it done with IBM LinuxONE Systems]()
 1. [Extend this solution to access your on-premises servers]()
-
 
 ### 1. Create an IBM Watson Assistant Service
 
@@ -112,14 +111,14 @@ Ensure you can execute **node -v** and **npm -v** commands from a command line i
 
 ![alt text](images/nodenpmVersion.jpg "Check node and npm commands")
 
-1. Using your command line, move to your local folder where you clone the git repository 
+1. Using your command line, move to your local folder where you clone the git repository
 2. Install the Node.js packages dependencies by running the **npm install** command.
 
 Before running the application, **remember to modify the file app.js** as indicated in Step 1 ! (See in "blue sections").
 
 3. So now, you should be ready to run the application locally using the following command **node server.js**
 4. Open a browser and point to localhost:3000 .
-5. Nice ! You should get a page to the chatbot application. 
+5. Nice ! You should get a page to the chatbot application.
 
 Here is a starting conversation example*, start with **Hello**.
 
@@ -133,7 +132,7 @@ Here is a starting conversation example*, start with **Hello**.
 
 So it is time now to deploy your modified code from your github repository to a linux virtual server running in the IBM Cloud Community Cloud.
 
-#### 3.1 Create your LinuxONE virtual server 
+#### 3.1 Create your LinuxONE virtual server
 
 This is a linux server we will use to build the Docker image from the LinuxONE Community Cloud.
 
@@ -147,13 +146,13 @@ You will go through these steps :
   * You will make a first time setup (select SLES12SP3)
   * You will deploy your LinuxONE virtual server.  Create a new ssh key pair and name it (for instance): linuxone
   * Your are ready to log into your newly created Linux Virtual Server on IBM LinuxONE System.
-    
+
 To Log in, use this **command template**:
 
 ```
 ssh -i /<Location of saved private key file>/linuxone.pem linux1@YOUR_IP_ADDRESS
 ```
-	
+
 #### 3.2 Build a Docker image for the provisioning chatbot application
 
 Clone the repository from your github repository to your new Linux Virtual Server
@@ -207,7 +206,7 @@ Here is a sample sequence of dialogs to test your code is working properly:
 In the sample code delivered the action is creating a sample file with the linux distribution you selected. In order to validate your provisioning chatbot is ready to execute any kind of commands, check the following :
 
 1 - Connect to you Linux Virtual machine running on IBM LinuxONE Community Cloud :
-		
+
 		=> ssh -i linuxone.pem linux1@<YOUR_IP_ADDRESS>
 2 - Display your containers
 
@@ -224,8 +223,8 @@ In the sample code delivered the action is creating a sample file with the linux
 
 	Example : root@6eab36b7265d:/AWAPlinuxonecc# cd /tmp
 
-5 - list the content of /tmp directory : 
-	
+5 - list the content of /tmp directory :
+
 	root@6eab36b7265d:/tmp# ll
 	total 12
 	drwxrwxrwt 1 root root 4096 Nov 13 18:11 ./
@@ -234,11 +233,11 @@ In the sample code delivered the action is creating a sample file with the linux
 
 6 - look at the file content of the file:
 
-	root@6eab36b7265d:/tmp# cat RHEL7U5.txt 
+	root@6eab36b7265d:/tmp# cat RHEL7U5.txt
 	From here you can code any deployment from a dialog !
 	root@6eab36b7265d:/tmp#
 
-Congratulations ! You may now decide to modify the code with your own code, rebuild a new version of the docker image and test it again. 
+Congratulations ! You may now decide to modify the code with your own code, rebuild a new version of the docker image and test it again.
 
 Otherwise it is time now to perform deployment of this image from **IBM Cloud Private** interface.
 
@@ -256,7 +255,7 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
     * Activate your account when you will receive the confirmation email.
 
 2. Login to the IBM Cloud private catalog (the access link is provided in the confirmation email) Fill credentials with yours:
-	
+
     ![alt text](images/icp_login.png "ICP Login")
     * Replace the username by your email.
     * Replace the password by your password.
@@ -283,12 +282,12 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 	![alt text](images/ConfigureHelmChart.png "Cognitive Hybrid Cloud Provisioning service configuration")
 	* Fill the release name with the name of your choice (limit of 30 characters).
 	* Select the target namespace, named: "linuxone" in the list.
-	* The image repository is already filled with the Docker image defined before: **cluster68.icp:8500/codepatterns/awap-cognitive-hybridcloud**.	
+	* The image repository is already filled with the Docker image defined before: **cluster68.icp:8500/codepatterns/awap-cognitive-hybridcloud**.
 
 3. Click the **Install** button. When the process is finished, click **View Helm Release**.
 
 	![alt text](images/ViewHelmRelease.png "Cognitive Hybrid Cloud Service configuration")
-	
+
 
 #### Part 3 - Access your chatbot microservice
 1. From the Helm release view, the container details are displayed.
@@ -298,23 +297,23 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 
 
 2. Test your application:
-	
+
 	![alt text](images/ChatbotApplication.png "Cognitive Hybrid Cloud service application")
-	
+
     * Start by saying "Hello"
     * The chatbot is initialized using a "corpus" pre-defined in IBM Cloud Watson Assistant Workspace
     * The result is displayed in the chatbot window
-    
+
     Use the dialog sequence mentioned in section 3.2:
     https://github.com/IBM/conversation-with-linuxone-using-watson-microservices#32-build-a-docker-image-for-the-provisioning-chatbot-application
-    
+
     For instance, I ask the chatbot to provision a Linux Ubuntu image on IBM LinuxONE. You should have a similar result in the log:
     ![alt text](images/CheckYourActionInTheLogs.png "Check your provisioning request log")
-   
+
    If you can access the /tmp of your running docker container you will see a file created with the Linux of your choice.
    The action executed in this code pattern is very simple and of course you can modify this code to execute your own actions !
    Enjoy creating new use cases !
-    
+
 3. REMEMBER ! Your account is available for 24 hours. All your containers will removed when your account will expire.
 
 ---
@@ -329,7 +328,7 @@ In order to establish the communication with your on-premises server you need to
 
 ![alt text](images/CreateSecureGatewayService.png "Check your provisioning request log")
 
-Here is the link to start creating your Hybrid Cloud Connection and use the chatbot application to provide Hybrid Cloud Services reusing existing services/APIs hosted in your premises ! 
+Here is the link to start creating your Hybrid Cloud Connection and use the chatbot application to provide Hybrid Cloud Services reusing existing services/APIs hosted in your premises !
 
 [Using IBM Cloud Secure Gateway Services](https://console.bluemix.net/catalog/services/secure-gateway)
 
