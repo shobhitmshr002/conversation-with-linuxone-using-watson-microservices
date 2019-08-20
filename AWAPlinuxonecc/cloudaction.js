@@ -1,12 +1,12 @@
 /**
  * Copyright 2015 IBM Corp. All Rights Reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
  * the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
@@ -39,7 +39,7 @@ function executeProvisioningFromDialog(req, res) {
 
 	var reqbody = JSON.stringify(req.body);
 	var provisionProjectselected;
-	
+
 	for (var i = 0; i < req.body.entities.length; i++) {
 		if (req.body.entities[i].entity === "LinuxImage") {
 			provisionProjectselected = req.body.entities[i].value;
@@ -47,7 +47,7 @@ function executeProvisioningFromDialog(req, res) {
 	}
 	console.log("Deploy a virtual server image based on user interaction: "
 			+ provisionProjectselected);
-	// MAP Project names to internal provisioning system name. 
+	// MAP Project names to internal provisioning system name.
 	// This may also be exported in the Watson Assistant service if required.
 	if (provisionProjectselected === "ClefOS") {
 		provisionProjectselected = "CLEFOS74";
@@ -61,7 +61,7 @@ function executeProvisioningFromDialog(req, res) {
 	if (provisionProjectselected === "Ubuntu") {
 		provisionProjectselected = "UBUNTU1804";
 	}
-	// ssh -p YOUR_PORT_NUMBER YOUR_USER@YOUR_PUBLIC_IP_ADDRESS YOUR_PROVISIONING_COMMAND 
+	// ssh -p YOUR_PORT_NUMBER YOUR_USER@YOUR_PUBLIC_IP_ADDRESS YOUR_PROVISIONING_COMMAND
 	var child = exec('ssh -p 22 sebll@localhost echo "From here you can code any deployment from a dialog !" > /tmp/'
 			+ provisionProjectselected + '.txt', function(error, stdout, stderr) { // one
 																					// easy
@@ -76,7 +76,7 @@ function executeProvisioningFromDialog(req, res) {
 		}
 	});
 	res.sendStatus(200);
-	
+
 }
 
 
