@@ -248,7 +248,7 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 
 1. Subscribe to [IBM Cloud Private in the Linux One Community Cloud](https://developer.ibm.com/linuxone)
 
-    ![ICP subscription](images/LinuxONECommunityCloud.gif)
+    ![ICP subscription](images/LinuxONECommunityCloud_new.jpg)
     * Click **Try Cloud Native Platform on the LinuxONE Community Cloud**.
     * Fill the form and submit.
     * Activate your account when you will receive the confirmation email.
