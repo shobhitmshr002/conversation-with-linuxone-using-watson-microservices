@@ -251,8 +251,9 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 
 ## Part 1 - Discover the Helm chart from the calalog
 
-1. Subscribe to [IBM Cloud private in the Linux One Community Cloud](https://developer.ibm.com/linuxone)
-![alt text](images/LinuxONECommunityCloud_new.jpg "ICP subscription")
+1. Subscribe to [IBM Cloud Private in the Linux One Community Cloud](https://developer.ibm.com/linuxone)
+
+    ![ICP subscription](images/LinuxONECommunityCloud_new.jpg)
     * Click **Try Cloud Native Platform on the LinuxONE Community Cloud**.
     * Fill the form and submit.
     * Activate your account when you will receive the confirmation email.
