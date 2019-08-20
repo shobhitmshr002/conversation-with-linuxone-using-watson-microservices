@@ -16,11 +16,12 @@ When you will complete this code pattern, you will understand how to:
 
 ![alt text](images/SequenceDiagram.png "Sequence diagram overview")
 
-1. The user creates a Cognitive service with an IBM Watson Assistant Service in IBM Cloud and load a pre-defined corpus,
-2. The user code and create a Docker image (Node.js application based microservice) and publish it to the IBM Cloud Private Docker registry.
-3. The user configures and runs a container based on the previous Docker image from IBM Cloud Private catalog.
-4. A chatbot interface allows the user to "discuss" with the IBM LinuxONE System to deploy cloud services (execute actions).
-5. The developer can extend this pattern to interact with its own on-premises servers using an IBM Secure Gateway service from IBM Cloud.
+1. Create an IBM Watson Assistant service and configure it.
+1. Build and deploy a Docker image to IBM Cloud Private.
+1. Build the Docker image from the LinuxONE Community Cloud.
+1. Deploy the Docker image to IBM Cloud Private.
+1. Instantiate the provisioning chatbot from the IBM Cloud Private catalog.
+1. Run the application: Talk and get it done with IBM LinuxONE Systems.
 
 ## Included components
 
