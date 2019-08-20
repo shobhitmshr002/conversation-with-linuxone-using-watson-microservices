@@ -34,21 +34,21 @@ When you will complete this code pattern, you will understand how to:
 
 ## Steps
 
-1. [Create an IBM Watson Assistant Service & Configure it]()
-1. [Build and deploy a Docker image to IBM Cloud private]()
-1. [Instantiate the provisiong chatbot from the IBM Cloud private catalog]()
-1. [Run the application: Talk and get it done with IBM LinuxONE Systems]()
-1. [Extend this solution to access your on-premises servers]()
+1. [Create and configure an Watson Assistant]()
+1. [Build and deploy a Docker image to IBM Cloud Private]()
+1. [Instantiate the chatbot from the IBM Cloud Private catalog]()
+1. [Run the application]()
+1. [Extend this solution]()
 
-### 1. Create an IBM Watson Assistant Service
+### 1. Create and configure an Watson Assistant
 
-* Create the following service and name it `provisioning-conversation-service`.
+* Create the following service and name it `cwlo-assistant`.
 
   * [Watson Assistant service](https://console.bluemix.net/catalog/services/conversation)
 
 * Get IBM Cloud service credentials and add to .env file
 
-As you create the IBM Cloud services, you'll need to create service credentials. You might get either IAM or username/password based credentials based on the region.
+As you create the IBM Cloud services, you'll need to create service credentials.
 
 First of all, move the provisioning-conversation-service/env.sample file to provisioning-conversation-service/.env.
 
@@ -60,7 +60,7 @@ Next, you have to create a new workspace:
 
 ![alt text](images/CreateWorkspace.png "Create New Workspace")
 
-Now use the **Import** feature for the file [`AWAPlinuxonecc/training/workspace-WatsonAssitantAwap.json`](AWAPlinuxonecc/training/workspace-WatsonAssitantAwap.json) to upload the Assistant Intents, Entities, and Dialog Nodes.
+Now use the **Import** feature for the file [`data/awap-workspace.json`](data/awap-workspace.json) to upload the Assistant Intents, Entities, and Dialog Nodes.
 
 Find the Workspace ID by clicking on the context menu of the new workspace and select **View details**
 
@@ -128,7 +128,7 @@ Here is a starting conversation example*, start with **Hello**.
 
 **CONGRATULATIONS!** You are done with the first part of this code patten! Now we are going to pakage and deploy the provisioning chatbot application for IBM Cloud Private in order to deploy it to IBM LinuxONE Systems.
 
-### 3. Instantiate the provisiong chatbot from the IBM Cloud Private catalog
+### 3. Instantiate the chatbot from the IBM Cloud Private catalog
 
 So it is time now to deploy your modified code from your github repository to a linux virtual server running in the IBM Cloud Community Cloud.
 
@@ -241,7 +241,7 @@ Congratulations ! You may now decide to modify the code with your own code, rebu
 
 Otherwise it is time now to perform deployment of this image from **IBM Cloud Private** interface.
 
-### Step 4 - Run the application: Talk and get it done with IBM LinuxONE Systems
+### 4. Run the application
 
 The objective is to discover the IBM Cloud private catalog in order to instantiate a container from your Docker image containing your chatbot hybrid cloud provisioning application. In this way, you will be able to dialog with a linux server hosted on IBM LinuxONE from the IBM Cloud Private solution running in the IBM LinuxONE Community Cloud.
 
@@ -321,7 +321,7 @@ The objective is to discover the IBM Cloud private catalog in order to instantia
 :thumbsup: Congratulations! Your Cognitive Hybrid Cloud application has been instantiated from IBM Cloud Private as container. Your Cognitive Hybrid Cloud application succeeded to execute a command in your LinuxONE Server.
 
 ---
-### Step 5 - Extend this solution to access your on-premises servers
+### 5. Extend the solution
 
 Looking to the file **Action.js**, you can now modify the command it contains. Change the localhost value to the ip address of your choice to point to your on-premises server.
 In order to establish the communication with your on-premises server you need to create an IBM Cloud Service for Integration, named Secure Gateway:

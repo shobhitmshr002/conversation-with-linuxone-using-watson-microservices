@@ -3,16 +3,13 @@
     "type": "https",
     "url": "https://github.com/IBM/conversation-with-linuxone-using-watson-microservices.git"
   },
-  "name": "conversation-simple",
-  "description": "A Node.js application (named awap) capable to provide support services using Linux z System through a conversation using Watson APIs in Bluemix.",
+  "name": "conversation-linuxone",
+  "description": "A Node.js application (named awap) capable to provide support services using Linux z System through a conversation using Watson APIs in IBM Cloud.",
   "version": "0.1.1",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha",
-    "lint": "eslint .",
-    "autofix": "eslint --fix .",
-    "codecov": "npm run test && (codecov || true)"
+    "test": "eslint ."
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -32,13 +29,9 @@
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",
-    "codecov": "^1.0.1",
     "eslint": "^2.8.0",
     "eslint-config-airbnb-es5": "^1.0.9",
-    "eslint-plugin-react": "^5.1.1",
-    "istanbul": "^0.4.2",
-    "mocha": "^5.2.0",
-    "supertest": "^3.3.0"
+    "eslint-plugin-react": "^5.1.1"
   },
   "engine": {
     "node": ">= 4.2.4"
