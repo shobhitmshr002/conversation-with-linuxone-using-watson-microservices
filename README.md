@@ -289,6 +289,12 @@ We will now be using IBM Cloud Private to host our Dockerized application. We'll
 
 3. Follow the URL in your authorization email to sign in.
 
+4. Once signed in, click on *Try ICP on LinuxOne* under the *Containers* option.
+
+   ![linuxone-cc-overview-icp](images/linuxone-cc-overview-icp.png)
+
+5. You'll be redirected to the IBM Cloud Private console and asked to sign-in.
+
    ![icp-login](images/icp-login.png)
 
 4. Click the *Catalog* button on the top-right to access the catalog.
