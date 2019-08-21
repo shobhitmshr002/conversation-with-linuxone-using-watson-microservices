@@ -51,8 +51,7 @@ app.use(require('./cloudaction'));
 // Create the service wrapper
 var password = process.env.ASSISTANT_IAM_APIKEY;
 var conversation = new Watson( {
-  // If unspecified here, the CONVERSATION_USERNAME and CONVERSATION_PASSWORD env properties will be checked
-  // After that, the SDK will fall back to the bluemix-provided VCAP_SERVICES environment property
+
   username: 'apikey',
   password: password,
   url: 'https://gateway.watsonplatform.net/conversation/api',
