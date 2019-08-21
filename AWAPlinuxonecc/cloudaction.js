@@ -62,7 +62,7 @@ function executeProvisioningFromDialog(req, res) {
 		provisionProjectselected = "UBUNTU1804";
 	}
 	// ssh -p YOUR_PORT_NUMBER YOUR_USER@YOUR_PUBLIC_IP_ADDRESS YOUR_PROVISIONING_COMMAND
-	var child = exec('ssh -p 22 sebll@localhost echo "From here you can code any deployment from a dialog !" > /tmp/'
+	var child = exec('ssh -p 22 sebll@localhost echo "From here you can code any deployment from a dialog!" > /tmp/'
 			+ provisionProjectselected + '.txt', function(error, stdout, stderr) { // one
 																					// easy
 																					// function

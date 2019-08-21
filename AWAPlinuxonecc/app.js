@@ -49,11 +49,12 @@ app.use( bodyParser.json() );
 app.use(require('./cloudaction'));
 
 // Create the service wrapper
+var password = process.env.ASSISTANT_IAM_APIKEY;
 var conversation = new Watson( {
   // If unspecified here, the CONVERSATION_USERNAME and CONVERSATION_PASSWORD env properties will be checked
   // After that, the SDK will fall back to the bluemix-provided VCAP_SERVICES environment property
-  username: 'USERNAME',
-  password: 'PASSWORD',
+  username: 'apikey',
+  password: password,
   url: 'https://gateway.watsonplatform.net/conversation/api',
   version_date: '2016-09-20',
   version: 'v1'
@@ -61,7 +62,7 @@ var conversation = new Watson( {
 
 // Endpoint to be call from the client side
 app.post( '/api/message', function(req, res) {
-  var workspace = process.env.WORKSPACE_ID || 'WORKSPACEEID';
+  var workspace = process.env.WORKSPACE_ID || 'WORKSPACE_ID';
   if ( !workspace || workspace === '<workspace-id>' ) {
     return res.json( {
       'output': {
@@ -84,16 +85,16 @@ app.post( '/api/message', function(req, res) {
     if ( req.body.context ) {
       // The client must maintain context/state
       payload.context = req.body.context;
-      
+
     }
   }
   // Send the input to the conversation service
   conversation.message( payload, function(err, data) {
     if ( err ) {
-    	
+
       return res.status( err.code || 500 ).json( err );
     }
-    
+
     return res.json( updateMessage( payload, data ) );
   } );
 } );
@@ -110,7 +111,7 @@ function updateMessage(input, response) {
   var id = null;
   if ( !response.output ) {
     response.output = {};
-   
+
   } else {
     if ( logs ) {
       // If the logs db is set, then we want to record all input and responses
@@ -233,6 +234,6 @@ if ( cloudantUrl ) {
   } );
 }
 
- 
-   
+
+
 module.exports = app;

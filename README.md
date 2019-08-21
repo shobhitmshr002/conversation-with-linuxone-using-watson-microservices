@@ -34,317 +34,324 @@ When you will complete this code pattern, you will understand how to:
 
 ## Steps
 
-1. [Create and configure an Watson Assistant]()
-1. [Build and deploy a Docker image to IBM Cloud Private]()
-1. [Instantiate the chatbot from the IBM Cloud Private catalog]()
-1. [Run the application]()
-1. [Extend this solution]()
+  **PART ONE**
 
-### 1. Create and configure an Watson Assistant
+1. [Fork and clone the repo](#1-fork-and-clone-the-repo)
+2. [Create Watson services with IBM Cloud](#2-create-watson-services-with-ibm-cloud)
+3. [Upload the Watson Assistant workspace](#3-upload-the-watson-assistant-workspace)
+4. [Configure `.env` with credentials](#4-configure-env-with-credentials)
+5. [Run the application locally](#5-run-the-application-locally)
 
-* Create the following service and name it `cwlo-assistant`.
+  **PART TWO**
 
-  * [Watson Assistant service](https://console.bluemix.net/catalog/services/conversation)
+6. [Provision a LinuxONE virtual server]()
+7. [Dockerize your application on LinuxOne]()
 
-* Get IBM Cloud service credentials and add to .env file
+  **PART THREE**
 
-As you create the IBM Cloud services, you'll need to create service credentials.
+8. [Provision an IBM Cloud Private cluster]()
+9. [Deploy your application on IBM Cloud Private]()
 
-First of all, move the provisioning-conversation-service/env.sample file to provisioning-conversation-service/.env.
-
-Look after the service credentials from IBM Watson Assistant and note the username/password. You will have to update the app.js file in the section // CHANGE HERE WITH THE YOUR_USERNAME AND YOUR_PASSWORD PROVIDED IN YOUR IBM WATSON ASSISTANT SERVICE
-
-Now configure using launch tool button: ![alt text](images/LaunchTool.jpg "Launch Tool")
-
-Next, you have to create a new workspace:
-
-![alt text](images/CreateWorkspace.png "Create New Workspace")
-
-Now use the **Import** feature for the file [`data/awap-workspace.json`](data/awap-workspace.json) to upload the Assistant Intents, Entities, and Dialog Nodes.
-
-Find the Workspace ID by clicking on the context menu of the new workspace and select **View details**
-
-Again, here you will have to update the `app.js`. Look and change for the value of `YOUR_WORKSPACEID` and replace it with the value you found above.
-
-### 2. Discover and locally run the provisioning chatbot application
-
-The objective is to discover the provisioning chatbot in the *AWAPlinuxonecc* folder. This application is a Node.js application. It will be locally tested before packaging it into a Docker image for IBM Cloud private.
-
-#### 2.1 - Discover the provisioning chatbot application
+### 1. Fork and clone the repo
 
 1. Create a [GitHub account](https://github.com/).
+1. Fork this GitHub repository to your own GitHub account. It will now be named:
 
-  ![alt text](images/githubSingup.jpg "Sign up")
-  * Pick a username. This will be referenced later as "YOUR_USERNAME".
-  * Enter an email.
-  * Create a password.
-  * Click **Sign up for GitHub**.
-  * Select the plan *Unlimited public repositories for free*.
-  * A Confirmation email will be sent. Verify your email address to collaborate in Github.
+   ```ini
+   https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices
+   ```
 
-2. Fork the provisioning chatbot application from this GitHub repository to your own GitHub repository.
+1. Install the [Git command line interface](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line).
+1. Launch a terminal and clone your GitHub repository:
 
-	![alt text](images/Fork.jpg "Fork the provisioning chatbot app")
-	* Click **Fork**.
-	* Github automatically forks this project from this repository *IBM/conversation-with-linuxone-using-watson-microservices* to your repository *YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices*.
-	* Discover your forked project (your fresh provisioning chatbot application) in your Github repository *YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices*.
+   ```ini
+   git clone https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices
+   ```
 
-3. Install the [Git command line interface](https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line) to manage your GitHub repository. Git has three main commands:
-	* *git clone* is the command for creating a local copy of the source code from a GitHub repository.
-	* *git pull* is the command for pulling fresh code from a GitHub repository.
-	* *git push* is the command for pushing new code to a GitHub repository.
+### 2. Create Watson services with IBM Cloud
 
-4. Launch a terminal and clone your GitHub repository *conversation-with-linuxone-using-watson-microservices* to create a local copy of your banking application:
+Create the following services:
 
-```
-git clone https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices
-```
+* [**Watson Conversation**](https://cloud.ibm.com/catalog/services/conversation)
 
-#### 2.2 - Run locally the provisioning chatbot application
+### 3. Upload the Watson Assistant workspace
 
-In order to run the provisioning chatbot application, you need to install the following components for your environment (Windows, Mac OS, Linux):
+* Find the Assistant service in your IBM Cloud Dashboard.
+* Click on the service and then click on `Launch tool`.
+* Go to the `Skills` tab.
+* Click `Create new`
+* Click the `Import skill` tab.
+* Click `Choose JSON file`, go to your cloned repo dir, and `Open` the workspace.json file in [`data/awap-workspace.json`](data/awap-workspace.json).
+* Select `Everything` and click `Import`.
 
-  * **Node.js**: Node.js is a javascript application server.
-  * **npm**: npm resolves Node.js package dependencies. According to your operating system, npm may be distributed with Node.js.
+To find the `WORKSPACE_ID` for Watson Assistant:
 
-Ensure you can execute **node -v** and **npm -v** commands from a command line interface.
+* Go back to the `Skills` tab.
+* Find the card for the workspace you would like to use.
+* Click on the three dots in the upper right-hand corner of the card and select `View API Details`.
+* Copy the `Workspace ID` GUID. Save it for the .env file
 
-![alt text](images/nodenpmVersion.jpg "Check node and npm commands")
+![Get Workspace ID](https://github.com/IBM/pattern-utils/blob/master/watson-assistant/assistantPostSkillGetID.gif)
 
-1. Using your command line, move to your local folder where you clone the git repository
-2. Install the Node.js packages dependencies by running the **npm install** command.
+### 4. Configure `.env` with credentials
 
-Before running the application, **remember to modify the file app.js** as indicated in Step 1 ! (See in "blue sections").
+Our services are created and workspace uploaded. It's now time to let our application run locally and to do that we'll configure a simple text file with the values we want to use. We begin by copying the [`env.example`](env.example) file and naming it `.env`.
 
-3. So now, you should be ready to run the application locally using the following command **node server.js**
-4. Open a browser and point to localhost:3000 .
-5. Nice ! You should get a page to the chatbot application.
-
-Here is a starting conversation example*, start with **Hello**.
-
-> NOTE: You may express it differently and make also the system learn through the IBM Watson Assistant Service by adding new intents, entities and dialogs if you need !
-
-![alt text](images/conversationSample.png "Conversation with the provisioning chatbot")
-
-**CONGRATULATIONS!** You are done with the first part of this code patten! Now we are going to pakage and deploy the provisioning chatbot application for IBM Cloud Private in order to deploy it to IBM LinuxONE Systems.
-
-### 3. Instantiate the chatbot from the IBM Cloud Private catalog
-
-So it is time now to deploy your modified code from your github repository to a linux virtual server running in the IBM Cloud Community Cloud.
-
-#### 3.1 Create your LinuxONE virtual server
-
-This is a linux server we will use to build the Docker image from the LinuxONE Community Cloud.
-
-In case you need it, here is a detailed [Virtual Server Deployment Guide](https://github.com/LinuxONE-community-cloud/technical-resources/blob/master/deploy-virtual-server.md)
-
-Otherwise you can directly to [IBM linuxONE Community Cloud](https://developer.ibm.com/linuxone/) .It has a well defined and very intuitive interface.
-
-You will go through these steps :
-
-  * You will request access to LinuxONE Community Cloud.
-  * You will make a first time setup (select SLES12SP3)
-  * You will deploy your LinuxONE virtual server.  Create a new ssh key pair and name it (for instance): linuxone
-  * Your are ready to log into your newly created Linux Virtual Server on IBM LinuxONE System.
-
-To Log in, use this **command template**:
-
-```
-ssh -i /<Location of saved private key file>/linuxone.pem linux1@YOUR_IP_ADDRESS
+```bash
+cd AWAPlinuxonecc
+cp env.example .env
 ```
 
-#### 3.2 Build a Docker image for the provisioning chatbot application
+We now populate the key-value pairs with credentials for each IBM Cloud service (Assistant, Speech To Text, and Text To Speech). These values can be found in the `Services` menu in IBM Cloud, by selecting the `Service Credentials` option for each service.
 
-Clone the repository from your github repository to your new Linux Virtual Server
+Lastly, the `WORKSPACE_ID` value was retrieved in the previous step, we use that value here.
 
-```
-git clone https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices
-```
+#### `sample.env`:
 
-![alt text](images/clone.png "Clone the provisioning chatbot app")
-
-Move to the directory <YOUR_GIT_CLONE_LOCATION>/AWAPlinuxonecc and look for the file named **Action.js**.
-
-  Look to the following section and modify it accordingly:
-  // ssh -p YOUR_PORT_NUMBER YOUR_USER@YOUR_PUBLIC_IP_ADDRESS YOUR_PROVISIONING_COMMAND
-
-Save the **Action.js** file.
-You are ready to build your docker image with the following command:
-
-```
-sudo docker build -t "YOUR_USERNAME-AWAPlinuxonecc:latest" .
+```ini
+WORKSPACE_ID=<add_assistant_workspace>
+ASSISTANT_IAM_APIKEY=<add_assistant_apikey>
 ```
 
-> NOTE: Do not forget the `.` at the end of the command  :-) !
+### 5. Run the application locally
 
-You can, now, start your application from the docker image you just created.
+We'll be running the Node.js application in the [`AWAPlinuxonecc`](AWAPlinuxonecc) folder, we will test it locally before packaging it into a Docker image for IBM Cloud Private. In order to run the application, ensure you have installed [Node.js](https://nodejs.org/en/download/) the latest of which comes with `npm` also installed.
 
-```
-sudo docker run -p 3000:3000 YOUR_USERNAME-AWAPlinuxonecc
-```
+> **NOTE**: Ensure you can execute **node -v** and **npm -v** commands from a command line interface before proceeding. This application was most recently tested with `node v11.9.0` and `npm 6.9.0`.
 
-Launch a browser and point to YOUR_IP_ADDRESS:3000 and you should get access to the provisioning chatbot application as you tested previously locally on your own machine.
+* Go to the `AWAPlinuxonecc` folder of the cloned repository.
+* Run `npm install` to install the applications dependencies.
 
-Here is a sample sequence of dialogs to test your code is working properly:
+  ```bash
+  $ npm install
+  audited 7940 packages in 3.303s
+  ```
 
-```
-	Bot - Welcome to AWAP
-	You - Hello
-	Bot - Hello and welcome to this cognitive demonstration platform, how are you today ?
-	You - I am ok and you ?
-	Bot - I am ok ! All my functions seem to work properly :-) ! What are we doing today ?
-	You - I would like to deploy cloud services on IBM LinuxONE
-	Bot - Let's go for Cloud ! I am connected to a Cloud Environment running on a LinuxONE System. It  is based on Openstack, Would you like to work with this environment ?
-	You - Yes
-	Bot - I will use an Openstack based environment to do Infrastructure-as-a-service or IaaS, for you. Please, provide me with more information (Linux, distribution and vm size) about the cloud service to deploy ?
-	You - what can you do ?
-	Bot - Please, can you mention the linux image you need ? Redhat, SUSE or Ubuntu ? Can you also specify the Virtual Machine (VM) size you need ? small (1 vcpu) ? medium (2 vcpus) ? or large (4 vcpus) ?
-	You - ok provision a linux redhat in a small vm
-	Bot - I provisioned a small Virtual Machine with Linux Redhat on it. You can follow its deployment here ACCESS TO CLOUD MANAGER APPLIANCE. Would you like to do another deployment ?
-```
+* Run `npm start` to run the application:
 
-In the sample code delivered the action is creating a sample file with the linux distribution you selected. In order to validate your provisioning chatbot is ready to execute any kind of commands, check the following :
+   ```bash
+   $ npm start
+   > conversation-linuxone@0.1.1 start /Users/foo/workspace/conversation-with-linuxone-using-watson-microservices/AWAPlinuxonecc
+   > node server.js
 
-1 - Connect to you Linux Virtual machine running on IBM LinuxONE Community Cloud :
+   Server running on port: 3000
+   ```
 
-		=> ssh -i linuxone.pem linux1@<YOUR_IP_ADDRESS>
-2 - Display your containers
+* Open a browser and point to [http://localhost:3000/](http://localhost:3000/).
+* A webpage with the chatbot application should load. Start a conversation by saying *Hello*.
 
-	sudo docker ps
-	CONTAINER ID   IMAGE              COMMAND                  CREATED            STATUS          PORTS                    NAMES
-	6eab36b7265d   awaplinuxonecc:v4   "node /AWAPlinuxon..."   3 minutes ago     Up 3 minutes    0.0.0.0:3000->3000/tcp   upbeat_perlman
+  ![alt text](images/conversationSample.png)
 
-3 - Connect to the running docker container and execute commands
+:thumbsup: **CONGRATULATIONS!** You are done with the first part of this code pattern! Now we are going to package and deploy the application for IBM Cloud Private in order to deploy it to IBM LinuxONE Systems.
 
-	sudo docker exec -i -t <YOUR_CONTAINER_ID> /bin/bash
-	<YOUR_CONTAINER_ID> = 6eab36b7265d , in this example.
+### 6. Provision a LinuxONE virtual server
 
-4 - Move to the tmp directory of the running docker container
+We will be using a LinuxOne virtual server to build the Docker image. We'll get access to the virtual server from the [LinuxONE Community Cloud](https://developer.ibm.com/linuxone/).
 
-	Example : root@6eab36b7265d:/AWAPlinuxonecc# cd /tmp
+1. Go to the [LinuxONE Community Cloud](https://developer.ibm.com/linuxone/).
 
-5 - list the content of /tmp directory :
+2. Request access to "*Try Virtual Machines on the LinuxONE Community Cloud*".
 
-	root@6eab36b7265d:/tmp# ll
-	total 12
-	drwxrwxrwt 1 root root 4096 Nov 13 18:11 ./
-	drwxr-xr-x 1 root root 4096 Nov 13 18:10 ../
-	-rw-r--r-- 1 root root   54 Nov 13 18:11 RHEL7U5.txt
+   ![vm-linuxone](images/vm-linuxone.png)
 
-6 - look at the file content of the file:
+3. Follow the URL in your authorization email to sign in.
 
-	root@6eab36b7265d:/tmp# cat RHEL7U5.txt
-	From here you can code any deployment from a dialog !
-	root@6eab36b7265d:/tmp#
+4. Once signed in, click on *Manage Instances* under the *Virtual Server* option.
 
-Congratulations ! You may now decide to modify the code with your own code, rebuild a new version of the docker image and test it again.
+   ![linuxone-cc-overview-vm](images/linuxone-cc-overview-vm.png)
 
-Otherwise it is time now to perform deployment of this image from **IBM Cloud Private** interface.
+5. Provision a LinuxONE virtual server. By providing a name, SSH key pair, and selecting the **SLES12SP3** operating system.
 
-### 4. Run the application
+   ![linuxone-cc-new-vm](images/linuxone-cc-new-vm.png)
 
-The objective is to discover the IBM Cloud private catalog in order to instantiate a container from your Docker image containing your chatbot hybrid cloud provisioning application. In this way, you will be able to dialog with a linux server hosted on IBM LinuxONE from the IBM Cloud Private solution running in the IBM LinuxONE Community Cloud.
+6. Your virtual server should now be provisioned and a public IP address provided.
 
-#### Part 1 - Discover the Helm chart from the calalog
+   ![linuxone-cc-provisioned-vm](images/linuxone-cc-provisioned-vm.png)
 
-1. Subscribe to [IBM Cloud Private in the Linux One Community Cloud](https://developer.ibm.com/linuxone)
+7. Log into the virtual server by using `ssh`:
 
-    ![ICP subscription](images/LinuxONECommunityCloud_new.jpg)
-    * Click **Try Cloud Native Platform on the LinuxONE Community Cloud**.
-    * Fill the form and submit.
-    * Activate your account when you will receive the confirmation email.
+   ```bash
+   $ ssh linux1@148.100.245.147
+   =================================================================================
+   Welcome to the IBM LinuxONE Community Cloud!
 
-2. Login to the IBM Cloud private catalog (the access link is provided in the confirmation email) Fill credentials with yours:
+   This server is for authorized users only. All activity is logged and monitored.
+   Individuals using this server must abide to the Terms and Conditions listed here:
+   https://developer.ibm.com/linuxone/terms-of-use/
+   Your access will be revoked for any non-compliance.
+   ==================================================================================
+   linux1@myinstance:~>
+   ```
 
-    ![alt text](images/icp_login.png "ICP Login")
-    * Replace the username by your email.
-    * Replace the password by your password.
+### 7. Dockerize your application on LinuxOne
 
-3. Click the top-right icon  from the menu to access the catalog.
+1. Clone your forked repository on your new Linux virtual server
 
-	![alt text](images/icp-catalog-users.png "ICP catalog")
-	* Click on **Catalog**.
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/conversation-with-linuxone-using-watson-microservices
+   ```
 
-4. Click on the Helm Chart called **awap-cognitive-hybridcloud** to see the overview of the the chatbot cloud provisioning microservice.
+2. Go to the `AWAPlinuxonecc` folder, look for the file named `cloudaction.js`, and replace `ssh -p YOUR_PORT_NUMBER YOUR_USER@YOUR_PUBLIC_IP_ADDRESS YOUR_PROVISIONING_COMMAND` with the values from the previous section. For instance:
 
-	![alt text](images/AwapInICPCatalog.png "Awap view in ICP catalog")
+   ```javascript
+   // ssh -p 22 linux1@148.100.245.147 echo "From here you can code any deployment from a dialog!"
+   ```
 
+   > **NOTE**: Ensure your `.env` file is also on your virtual server before building the image.
 
-#### Part 2 - Configure and install your cloud provisioning chatbot microservice
+3. Build a Docker image with the `docker build` command:
 
-1. Check the chart details and click on configure to create your container.
+   ```bash
+   sudo docker build -t "YOUR_USERNAME-awaplinuxonecc:latest" .
+   ```
 
-	![alt text](images/DeployHelmChart.png "ICP AWAP deployment")
-	* Click **Configure**.
+   > **NOTE**: Do not forget the `.` at the end of the command.
+
+4. Start your Dockerized application by running `docker run`:
+
+   ```bash
+   sudo docker run -p 3000:3000 YOUR_USERNAME-awaplinuxonecc
+   ```
+
+5. Launch a browser and point to [http://YOUR_IP_ADDRESS:3000](http://YOUR_IP_ADDRESS:3000).
+
+6. Here is a sample conversation to try out:
+
+   ```ini
+   Bot: Welcome to AWAP
+   You: Hello
+   Bot: Hello and welcome to this cognitive demonstration platform, how are you today ?
+   You: I am ok and you ?
+   Bot: I am ok ! All my functions seem to work properly :-) ! What are we doing today ?
+   You: I would like to deploy cloud services on IBM LinuxONE
+   Bot: Let's go for Cloud ! I am connected to a Cloud Environment running on a LinuxONE System. It  is based on Openstack, Would you like to work with this environment ?
+   You: Yes
+   Bot: I will use an Openstack based environment to do Infrastructure-as-a-service or IaaS, for you. Please, provide me with more information (Linux, distribution and vm size) about the cloud service to deploy ?
+   You: what can you do ?
+   Bot: Please, can you mention the linux image you need ? Redhat, SUSE or Ubuntu ? Can you also specify the Virtual Machine (VM) size you need ? small (1 vcpu) ? medium (2 vcpus) ? or large (4 vcpus) ?
+   You: ok provision a linux redhat in a small vm
+   Bot: I provisioned a small Virtual Machine with Linux Redhat on it. You can follow its deployment here ACCESS TO CLOUD MANAGER APPLIANCE. Would you like to do another deployment ?
+   ```
+
+#### 7.1 Verify the action is working
+
+In our code, an action is creating a sample file (with our selected Linux distribution information) when the chatbot is engaged. We can verify this by performing the following steps:
+
+1. Reconnect to you Linux virtual server:
+
+   ```bash
+   ssh linux1@148.100.245.147
+   ```
+
+2. List your running containers:
+
+   ```bash
+   $ sudo docker ps
+   CONTAINER ID   IMAGE              COMMAND                  CREATED            STATUS          PORTS                    NAMES
+   6eab36b7265d   awaplinuxonecc:v4   "node /AWAPlinuxon..."   3 minutes ago     Up 3 minutes    0.0.0.0:3000->3000/tcp   upbeat_perlman
+   ```
+
+3. Connect to the running container and start a bash process:
+
+   ```bash
+   sudo docker exec -i -t <YOUR_CONTAINER_ID> /bin/bash
+   ```
+
+4. List the files in `/tmp`:
+
+   ```bash
+   root@6eab36b7265d:/tmp# ll /tmp
+   total 12
+   drwxrwxrwt 1 root root 4096 Nov 13 18:11 ./
+   drwxr-xr-x 1 root root 4096 Nov 13 18:10 ../
+   -rw-r--r-- 1 root root   54 Nov 13 18:11 RHEL7U5.txt
+   ```
+
+5. Output the contents of the file:
+
+   ```bash
+   root@6eab36b7265d:/tmp# cat /tmp/RHEL7U5.txt
+   From here you can code any deployment from a dialog !
+   root@6eab36b7265d:/tmp#
+   ```
+
+:thumbsup: **CONGRATULATIONS!** It is time now to deploy this image to our **IBM Cloud Private** cluster.
+
+### 8. Provision an IBM Cloud Private cluster
+
+We will now be using IBM Cloud Private to host our Dockerized application. We'll get access to IBM Cloud Private from the [LinuxONE Community Cloud](https://developer.ibm.com/linuxone/).
+
+1. Go to the [LinuxONE Community Cloud](https://developer.ibm.com/linuxone/).
+
+2. Request access to "*Try Cloud Native Platform on the LinuxONE Community Cloud*".
+
+   ![vm-linuxone](images/cn-linuxone.png)
+
+3. Follow the URL in your authorization email to sign in.
+
+   ![icp-login](images/icp-login.png)
+
+4. Click the *Catalog* button on the top-right to access the catalog.
+
+   ![icp-catalog-users](images/icp-catalog-users.png)
+
+5. Click on the tile called **awap-cognitive-hybridcloud** to see the overview of the application.
+
+   ![alt text](images/AwapInICPCatalog.png)
+
+### 9. Deploy your application on IBM Cloud Private
+
+1. Check the chart details and click on the **Configure** button to create your container.
+
+   ![DeployHelmChart](images/DeployHelmChart.png)
 
 2. Configure the container:
 
-	![alt text](images/ConfigureHelmChart.png "Cognitive Hybrid Cloud Provisioning service configuration")
-	* Fill the release name with the name of your choice (limit of 30 characters).
-	* Select the target namespace, named: "linuxone" in the list.
-	* The image repository is already filled with the Docker image defined before: **cluster68.icp:8500/codepatterns/awap-cognitive-hybridcloud**.
+   ![ConfigureHelmChart](images/ConfigureHelmChart.png)
+
+   * Choose a release name.
+   * Select `linuxone` as the target namespace.
+   * The image repository should point to: `cluster68.icp:8500/codepatterns/awap-cognitive-hybridcloud`.
 
 3. Click the **Install** button. When the process is finished, click **View Helm Release**.
 
-	![alt text](images/ViewHelmRelease.png "Cognitive Hybrid Cloud Service configuration")
+   ![ViewHelmRelease](images/ViewHelmRelease.png)
 
+4. From the Helm release view, the container details are displayed.
 
-#### Part 3 - Access your chatbot microservice
-1. From the Helm release view, the container details are displayed.
+   ![ServiceDeployed](images/ServiceDeployed.png)
 
-	![alt text](images/ServiceDeployed.png "Cognitive Hybrid Cloud Service configuration")
-	* Click on **Launch** to display the Chatbot microservice.
+   * Click on **Launch** to display the Chatbot microservice.
 
+5. Test your application by saying "Hello". The results will be displayed in the chatbot window.
 
-2. Test your application:
+   ![ChatbotApplication](images/ChatbotApplication.png)
 
-	![alt text](images/ChatbotApplication.png "Cognitive Hybrid Cloud service application")
+6. Further, you can check the logs to ensure your application is behaving as expected.
 
-    * Start by saying "Hello"
-    * The chatbot is initialized using a "corpus" pre-defined in IBM Cloud Watson Assistant Workspace
-    * The result is displayed in the chatbot window
-
-    Use the dialog sequence mentioned in section 3.2:
-    https://github.com/IBM/conversation-with-linuxone-using-watson-microservices#32-build-a-docker-image-for-the-provisioning-chatbot-application
-
-    For instance, I ask the chatbot to provision a Linux Ubuntu image on IBM LinuxONE. You should have a similar result in the log:
-    ![alt text](images/CheckYourActionInTheLogs.png "Check your provisioning request log")
+   ![CheckYourActionInTheLogs](images/CheckYourActionInTheLogs.png)
 
    If you can access the /tmp of your running docker container you will see a file created with the Linux of your choice.
-   The action executed in this code pattern is very simple and of course you can modify this code to execute your own actions !
-   Enjoy creating new use cases !
 
-3. REMEMBER ! Your account is available for 24 hours. All your containers will removed when your account will expire.
+> **NOTE**: Your account is only available for 48 hours. All your containers will deleted when your account expires.
 
----
+:thumbsup: **CONGRATULATIONS!** Your  application has been deployed to IBM Cloud Private as a container and has successfully executed a command on your LinuxONE Server.
 
-:thumbsup: Congratulations! Your Cognitive Hybrid Cloud application has been instantiated from IBM Cloud Private as container. Your Cognitive Hybrid Cloud application succeeded to execute a command in your LinuxONE Server.
+## Extend the solution
 
----
-### 5. Extend the solution
+You can now modify [**cloudaction.js**](AWAPlinuxonecc/cloudaction.js) to run whatever command you like. Change the localhost value to the IP address to point to your on-premises server. In order to establish the communication with an on-premises server you need to create an IBM Cloud Service for Integration, named [Secure Gateway](https://console.bluemix.net/catalog/services/secure-gateway):
 
-Looking to the file **Action.js**, you can now modify the command it contains. Change the localhost value to the ip address of your choice to point to your on-premises server.
-In order to establish the communication with your on-premises server you need to create an IBM Cloud Service for Integration, named Secure Gateway:
+![CreateSecureGatewayService](images/CreateSecureGatewayService.png)
 
-![alt text](images/CreateSecureGatewayService.png "Check your provisioning request log")
-
-Here is the link to start creating your Hybrid Cloud Connection and use the chatbot application to provide Hybrid Cloud Services reusing existing services/APIs hosted in your premises !
-
-[Using IBM Cloud Secure Gateway Services](https://console.bluemix.net/catalog/services/secure-gateway)
-
----
-
-:thumbsup: Congratulations ! I hope you enjoyed working with this Code Pattern.
-
----
-
-## Licence
-
-[Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0)
+:thumbsup: **CONGRATULATIONS!** You have successfully completed this code pattern!
 
 ## Links
 
-* [IBM Cloud private](https://www.ibm.com/cloud/private)
-* [IBM Cloud private - Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSBS6K/product_welcome_cloud_private.html)
-* [IBM ID](https://www.ibm.com/account/us-en/signup/register.html)
-* [API Developer Portal](https://developer-contest-spbodieusibmcom-prod.developer.us.apiconnect.ibmcloud.com/)
+* [IBM Cloud Private](https://www.ibm.com/cloud/private)
+* [IBM Cloud Private: Knowledge Center](https://www.ibm.com/support/knowledgecenter/en/SSBS6K/product_welcome_cloud_private.html)
+
+## License
+
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
+
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
