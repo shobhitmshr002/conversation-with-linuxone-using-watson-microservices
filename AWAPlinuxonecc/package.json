@@ -13,7 +13,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "basic-auth-connect": "1.0.0",
+    "basic-auth-connect": "1.1.0",
     "body-parser": "^1.18.3",
     "btoa": "1.2.1",
     "cloudant": "1.4.1",
